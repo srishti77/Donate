@@ -1,21 +1,19 @@
 package com.example.donate.di
 
 import android.app.Application
-import com.example.donate.data.ChildrenRepo
 import dagger.BindsInstance
 import dagger.Component
+import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
 @Component(
-    modules = [RoomModule::class]
+    modules = [AndroidSupportInjectionModule::class,  ActivityBuilder::class, RoomModule::class, MainActivityModule::class]
 )
 @Singleton
 interface AppComponent {
 
 
-    fun inject(mainApplication: Application)
-
-    fun getRepo(): ChildrenRepo
+    fun inject(application: DonateApplication)
 
     @Component.Builder
     interface Builder{
