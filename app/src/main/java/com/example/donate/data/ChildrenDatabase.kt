@@ -13,53 +13,43 @@ import kotlinx.coroutines.launch
 abstract class ChildrenDatabase : RoomDatabase() {
 
     abstract fun childrenDao(): ChildrenDAO
+}
 
-    companion object {
-        @Volatile
-        private var instance: ChildrenDatabase? = null
+ /*   companion object {
 
         fun getDatabase(context: Context, coroutineScope: CoroutineScope): ChildrenDatabase {
-            val tempInstance = instance
 
-            if (tempInstance != null)
-                return tempInstance
-
-            synchronized(this) {
                 val inst = Room.databaseBuilder(
                     context.applicationContext,
                     ChildrenDatabase::class.java,
                     "Children_Database")
-                    .addCallback(ChildrenDatabaseCallback(coroutineScope))
                     .build()
-
-                instance = inst
                 return inst
-
             }
         }
     }
 
-    class ChildrenDatabaseCallback(private val scope: CoroutineScope) :
-        RoomDatabase.Callback() {
+/*class ChildrenDatabaseCallback(private val scope: CoroutineScope) :
+    RoomDatabase.Callback() {
 
-        override fun onOpen(db: SupportSQLiteDatabase) {
-            super.onOpen(db)
+    override fun onOpen(db: SupportSQLiteDatabase) {
+        super.onOpen(db)
 
-            instance?.let { database ->
-                scope.launch(Dispatchers.IO) {
-                    populateDatabase(database.childrenDao())
-                }
+        instance?.let { database ->
+            scope.launch(Dispatchers.IO) {
+                populateDatabase(database.childrenDao())
             }
         }
+    }
 
-        private fun populateDatabase(childrenDao: ChildrenDAO) {
-            childrenDao.deleteAll()
-            val children1 = Children("123", "Priya Kumari", "12")
-            childrenDao.insert(children1)
-            val children2 = Children("124", "Raj Rizal", "13")
-            childrenDao.insert(children2)
-            val children3 = Children("125", "Nisha Aryal", "13")
-            childrenDao.insert(children3)
-        }
+    private fun populateDatabase(childrenDao: ChildrenDAO) {
+        childrenDao.deleteAll()
+        val children1 = Children("123", "Priya Kumari", "12")
+        childrenDao.insert(children1)
+        val children2 = Children("124", "Raj Rizal", "13")
+        childrenDao.insert(children2)
+        val children3 = Children("125", "Nisha Aryal", "13")
+        childrenDao.insert(children3)
     }
 }
+}*/

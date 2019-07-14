@@ -35,9 +35,8 @@ class ChildrenListAdapter internal constructor(context: Context) : RecyclerView.
     internal fun addChildren(children: Children){
         childrens.add(children)
     }
+
     inner class ChildrenViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         val childrenName: TextView = itemView.findViewById(R.id.name)
     }
-
-
 }
