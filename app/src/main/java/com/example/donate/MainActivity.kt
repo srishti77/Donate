@@ -44,7 +44,7 @@ class MainActivity : DaggerAppCompatActivity() {
         val children = Children("23", "Srishti Gaihre", "12")
         childrenViewModel?.insert(children)
 
-        childrenViewModel?.allChildren?.observe(this, Observer{ childrens ->
+        childrenViewModel?.allChildren?.observe(this, Observer { childrens ->
             childrens?.let {
                 adapter.setChildren(childrens)
             }
